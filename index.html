@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Reminder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="app-title">💊 Medicine Reminder</h1>
+                <button class="dark-mode-toggle" id="darkModeToggle">
+                    <span class="toggle-icon">🌙</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="container">
+                <!-- Add Reminder Form -->
+                <section class="add-reminder-section">
+                    <div class="card">
+                        <h2 class="section-title">Add New Reminder</h2>
+                        <form class="add-form" id="addReminderForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="medicineName">Medicine Name</label>
+                                    <input type="text" id="medicineName" name="medicineName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="dosage">Dosage</label>
+                                    <input type="text" id="dosage" name="dosage" placeholder="e.g., 2 tablets" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="time">Time</label>
+                                    <input type="time" id="time" name="time" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="frequency">Frequency</label>
+                                    <select id="frequency" name="frequency" required>
+                                        <option value="once">Once</option>
+                                        <option value="daily">Daily</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Add Reminder</button>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- Filter Tabs -->
+                <section class="tabs-section">
+                    <div class="tabs" id="filterTabs">
+                        <button class="tab active" data-filter="all">
+                            All <span class="badge" id="allCount">0</span>
+                        </button>
+                        <button class="tab" data-filter="upcoming">
+                            Upcoming <span class="badge" id="upcomingCount">0</span>
+                        </button>
+                        <button class="tab" data-filter="taken">
+                            Taken <span class="badge" id="takenCount">0</span>
+                        </button>
+                        <button class="tab" data-filter="missed">
+                            Missed <span class="badge" id="missedCount">0</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Reminders List -->
+                <section class="reminders-section">
+                    <div id="remindersList" class="reminders-list">
+                        <!-- Reminders will be dynamically inserted here -->
+                    </div>
+                    <div id="emptyState" class="empty-state">
+                        <p>No reminders found. Add your first medicine reminder above!</p>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Reminder</h3>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <form id="editReminderForm" class="edit-form">
+                <div class="form-group">
+                    <label for="editMedicineName">Medicine Name</label>
+                    <input type="text" id="editMedicineName" name="medicineName" required>
+                </div>
+                <div class="form-group">
+                    <label for="editDosage">Dosage</label>
+                    <input type="text" id="editDosage" name="dosage" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editTime">Time</label>
+                        <input type="time" id="editTime" name="time" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editFrequency">Frequency</label>
+                        <select id="editFrequency" name="frequency" required>
+                            <option value="once">Once</option>
+                            <option value="daily">Daily</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelEdit">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Update Reminder</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
